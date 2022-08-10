@@ -37,9 +37,13 @@ function App() {
 
     if (latitude && longitude && date) {
       onOpen();
-      fetchData(
-        `http://api.sunrise-sunset.org/json?lat=${latitude}&lng=${-longitude}&date=${date}`
-      );
+      window.location.hostname === 'localhost'
+        ? fetchData(
+            `http://api.sunrise-sunset.org/json?lat=${latitude}&lng=${-longitude}&date=${date}`
+          )
+        : fetchData(
+            `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${-longitude}&date=${date}`
+          );
     }
   }
 

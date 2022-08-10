@@ -28,7 +28,7 @@ const MainForm = ({
   };
 
   return (
-    <Box w={{base: '80%', sm: '70%'}}>
+    <Box w={{base: '80%', sm: '70%', md: '100%'}}>
       <form onSubmit={handleSubmit}>
         <VStack align="flex-start" mb={3}>
           <Text fontSize="md">Latitude</Text>
