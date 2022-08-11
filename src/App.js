@@ -38,7 +38,7 @@ function App() {
     if (latitude && longitude && date) {
       onOpen();
       fetchData(
-        `/json?lat=${latitude}&lng=${-longitude}&date=${date}`
+        `https://crossorig.in/https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${-longitude}&date=${date}`
       );
     }
   }
