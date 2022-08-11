@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "https://api.sunrise-sunset.org",
+  "homepage": "https://interaxa-challenge.vercel.app/",
   "dependencies": {
     "@chakra-ui/react": "^2.2.6",
     "@emotion/react": "^11.10.0",
