@@ -1,7 +1,8 @@
-Last Release 10/08/2022
+## Last Release 10/08/2022
 
-There is a CORS issue with the API that only allows to make request in localhost. Run the app in the development mode for testing.
-I'll be making tests with fetch-jsonp package to solve this bug.
+### 🚫 There is a CORS issue with the API that only allows to make request in localhost. Run the app in the development mode for testing.
+### I'll be making tests with fetch-jsonp package to solve this bug 🪲🔧.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
