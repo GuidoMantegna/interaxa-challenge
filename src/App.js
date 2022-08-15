@@ -20,7 +20,7 @@ import {
 } from '@chakra-ui/react';
 //UTIL
 import useFetch from './util/useFetch';
-const functions = require('./util/functions');
+import functions from './util/functions';
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();

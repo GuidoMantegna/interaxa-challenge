@@ -18,4 +18,6 @@ const functions = {
     return data;
   },
 };
-module.exports = functions;
+
+export default functions
+// module.exports = functions;

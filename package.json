@@ -20,7 +20,7 @@
   "scripts": {
     "start": "PORT=3006 react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "testWatch": "jest --watchAll",
     "eject": "react-scripts eject"
   },

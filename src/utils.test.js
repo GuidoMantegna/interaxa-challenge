@@ -1,6 +1,16 @@
-//functions.test.js
-const { expect } = require('@jest/globals');
-const functions = require('./util/functions');
+import React from 'react';
+import { render } from '@testing-library/react';
+import { ChakraProvider, theme } from '@chakra-ui/react';
+
+const AllProviders = ({ children }) => (
+  <ChakraProvider theme={theme}>{children}</ChakraProvider>
+);
+
+const customRender = (ui, options) =>
+  render(ui, { wrapper: AllProviders, ...options });
+
+export { customRender as render };
+import functions from './util/functions';
 const axios = require('axios');
 
 test('Key must be a number', () => {
@@ -45,11 +55,3 @@ test('The request must contain a valid object', async () => {
   expect(typeof data).toBe('object');
   expect(sunrise).toMatch(/5:43:40 AM/);
 });
-
-// test('The date has an invalid format', async () => {
-//   const URL =
-//     'https://crossorig.in/https://crossorig.in/https://api.sunrise-sunset.org/json?lat=23.5&lng=-6.3&date=02-08-2022';
-//   const data = await functions.getinfo(URL);
-//   const { status } = data;
-//   expect(status).toMatch(/INVALID_DATE/);
-// });
