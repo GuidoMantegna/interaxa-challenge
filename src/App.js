@@ -16,9 +16,11 @@ import {
   theme,
   Center,
   Text,
+  Divider,
 } from '@chakra-ui/react';
 //UTIL
 import useFetch from './util/useFetch';
+const functions = require('./util/functions');
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,6 +33,7 @@ function App() {
   const [{ info, isError, isLoading }, fetchData] = useFetch();
   const { latitude, longitude, date } = query;
   const [isListLoading, setIsListLoading] = useState('idle');
+  const [favQueries, setFavQueries] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -50,7 +53,8 @@ function App() {
       {
         ...info,
         date: query.date,
-        key: new Date().getMilliseconds(query.sunrise),
+        key: functions.dateToKey(query.sunrise),
+        fav: false,
       },
     ]);
     setTimeout(() => {
@@ -62,9 +66,20 @@ function App() {
   const deleteQuery = id => {
     setIsListLoading(true);
     setTimeout(() => {
-      setQueries(() => queries.filter(query => query.key !== id));
+      let newQueries = functions.deleteQuery(id, queries);
+      setQueries(newQueries);
       setIsListLoading(false);
     }, 500);
+  };
+
+  const addFav = id => {
+    setQueries(functions.addFav(id, queries));
+  };
+
+  const showOnlyFavs = () => {
+    favQueries
+      ? setFavQueries(null)
+      : setFavQueries(functions.showOnlyFavs(queries));
   };
 
   return (
@@ -93,13 +108,16 @@ function App() {
                   handleSubmit={handleSubmit}
                   disabled={!(latitude && longitude && date)}
                 />
+                <Divider />
                 {isError ? (
                   <Text>Upss... an error occurred please try again later!</Text>
                 ) : (
                   <ListComponent
-                    queries={queries}
+                    queries={favQueries ? favQueries : queries}
                     isListLoading={isListLoading}
                     deleteQuery={deleteQuery}
+                    addFav={addFav}
+                    showOnlyFavs={showOnlyFavs}
                   />
                 )}
               </VStack>

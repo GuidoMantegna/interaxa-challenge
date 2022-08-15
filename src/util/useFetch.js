@@ -1,5 +1,5 @@
-import { useState, /*useEffect*/ } from 'react';
-
+import { useState /*useEffect*/ } from 'react';
+import functions from './functions';
 
 const useFetch = url => {
   const [info, setInfo] = useState({});
@@ -10,8 +10,9 @@ const useFetch = url => {
     setIsError(false);
     setIsLoading(true);
     try {
-      const response = await fetch(url).then(res => res.json());
-      setInfo(response.results);
+      // const response = await fetch(url).then(res => res.json());
+      const response = await functions.getinfo(url);
+      setInfo(response);
     } catch (error) {
       setIsError(true);
     }

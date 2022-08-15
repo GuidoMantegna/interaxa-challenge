@@ -5,6 +5,7 @@ import App from './App';
 
 test('renders learn react link', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn chakra/i);
+  // const linkElement = screen.getByText(/learn chakra/i);
+  const linkElement = screen.getByText(/Latitude/i);
   expect(linkElement).toBeInTheDocument();
 });
